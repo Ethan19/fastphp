@@ -7,7 +7,7 @@ class Fastphp{
     }
 
     public static function run(){
-        spl_autoload_register(array($this,"loadClass"));
+        // spl_autoload_register(array(self,"loadClass"));
     }
 
     public static function loadClass($class){
