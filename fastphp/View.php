@@ -27,13 +27,13 @@ class  View{
      */
     public function render(){
         extract($this->variables);
-        
+        $controller = str_replace("Controller","",$this->_controller);
         $defaulHeader = APP_PATH.'application/views/header.php';
         $defaulFooter = APP_PATH.'application/views/footer.php';
 
-        $controllerHeader = APP_PATH.'application/views/'.$this->_controller.'/header.php';
-        $controllerFooter = APP_PATH.'application/views/'.$this->_controller.'/footer.php';
-        $controllerLayout = APP_PATH.'application/views/'.$this->_controller.'/'.$this->_action.'.php';
+        $controllerHeader = APP_PATH.'application/views/'.$controller.'/header.php';
+        $controllerFooter = APP_PATH.'application/views/'.$controller.'/footer.php';
+        $controllerLayout = APP_PATH.'application/views/'.$controller.'/'.$this->_action.'.php';
         if(file_exists($controllerHeader)){
             include $controllerHeader;
         }else{

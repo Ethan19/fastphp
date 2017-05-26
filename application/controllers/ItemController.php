@@ -10,9 +10,7 @@ class ItemController extends Controller{
         // echo '<pre>';
         // die;
        $res =  $itemModel->query("select * from item");
-       echo '<pre>';
-       var_dump($res);
-       echo '<pre>';
-       die;
+       $this->assign("list",$res);
+       $this->render();
     }
 }
