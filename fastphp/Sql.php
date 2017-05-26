@@ -1,5 +1,5 @@
 <?php 
-
+namespace Fastphp;
 class Sql
 {
     protected $_dbHandle;

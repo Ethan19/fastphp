@@ -1,5 +1,6 @@
 <?php
-
+namespace Fastphp;
+use Fastphp\Model as Model;
 class Fastphp{
 
     public function __construct($config){
@@ -12,7 +13,6 @@ class Fastphp{
         $this->unregisterGlobals();
         $this->setDbConfig();
         $this->route();
-        // spl_autoload_register(array(self,"loadClass"));
     }
 //路由
     public function route(){
@@ -38,20 +38,18 @@ class Fastphp{
             array_shift($urlArray);
             $param = $urlArray ? $urlArray : array();
         }
-        $controllerName  =$controllerName."Controller";
+        $controllerName  ="\Application\Controller\\".$controllerName."Controller";
         try{
             if(!class_exists($controllerName)){
-                // die($controllerName."NOT FOUND");
-                throw new Exception($controllerName."NOT FOUND", 1);
+                echo "11<br />";
+                throw new \Exception($controllerName."NOT FOUND", 1);
             }
             if(!method_exists($controllerName,$actionName)){
-                // die($controllerName."&nbsp;&nbsp; METHOD ".$actionName." NOT FOUND");
-                throw new Exception($controllerName."&nbsp;&nbsp; METHOD ".$actionName." NOT FOUND", 1);
+                throw new \Exception($controllerName."&nbsp;&nbsp; METHOD ".$actionName." NOT FOUND", 1);
             }
-        }catch(Exception $e){
+        }catch(\Exception $e){
             die($e->getMessage());
         }
-        
         $dispatch = new $controllerName($controllerName,$actionName);
 
         call_user_func_array(array($dispatch,$actionName),$param);
@@ -104,7 +102,13 @@ class Fastphp{
             ini_set('log_errors', 'On');
         }
     }
-    
+    /**
+     * Undocumented function
+     *
+     * @param [type] $class
+     * @return void
+     * 重写spl_autoload_register，现在使用命名空间，暂时启用此处
+     */
     public static function loadClass($class){
 
         $framework = __DIR__."/".$class.".php";

@@ -1,5 +1,5 @@
 <?php
-
+namespace Fastphp;
 class  View{
 
     protected $variables;

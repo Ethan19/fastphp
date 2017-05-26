@@ -1,5 +1,6 @@
 <?php
-
+namespace Fastphp;
+use Fastphp\Sql;
 class Model extends Sql{
     protected $_model;
     protected $_table;

@@ -1,5 +1,5 @@
 <?php
-
+namespace Fastphp;
 class Controller{
     protected $_controller;
     protected $_action;
