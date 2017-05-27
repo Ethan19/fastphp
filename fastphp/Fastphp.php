@@ -16,8 +16,8 @@ class Fastphp{
     }
 //路由
     public function route(){
-        $controllerName = $this->_config['defaultController'];
-        $actionName = $this->_config['defaultAction'];
+        $controller = $this->_config['defaultController'];
+        $action = $this->_config['defaultAction'];
         $url = $_SERVER['REQUEST_URI'];
         $position = strpos($url,'?');
         $url = $position ===  false?$url:substr($url,0,$position);
@@ -29,30 +29,31 @@ class Fastphp{
             // 删除空的数组元素
             $urlArray = array_filter($urlArray);
             // 获取控制器名
-            $controllerName = ucfirst($urlArray[0]);
+            $controller = ucfirst($urlArray[0]);
             
             // 获取动作名
             array_shift($urlArray);
-            $actionName = $urlArray ? $urlArray[0] : $actionName;
+            $action = $urlArray ? $urlArray[0] : $actionName;
             // 获取URL参数
             array_shift($urlArray);
             $param = $urlArray ? $urlArray : array();
         }
-        $controllerName  ="\Application\Controller\\".$controllerName."Controller";
+
+        $controllerName  ="\Application\Controller\\".$controller."Controller";
         try{
             if(!class_exists($controllerName)){
                 echo "11<br />";
                 throw new \Exception($controllerName."NOT FOUND", 1);
             }
-            if(!method_exists($controllerName,$actionName)){
-                throw new \Exception($controllerName."&nbsp;&nbsp; METHOD ".$actionName." NOT FOUND", 1);
+            if(!method_exists($controllerName,$action)){
+                throw new \Exception($controllerName."&nbsp;&nbsp; METHOD ".$action." NOT FOUND", 1);
             }
         }catch(\Exception $e){
             die($e->getMessage());
         }
-        $dispatch = new $controllerName($controllerName,$actionName);
+        $dispatch = new $controllerName($controller,$action);
 
-        call_user_func_array(array($dispatch,$actionName),$param);
+        call_user_func_array(array($dispatch,$action),$param);
 
     }
 

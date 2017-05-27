@@ -1,5 +1,5 @@
 <?php
-namespace Application\Modela;
+namespace Application\Model;
 
 use Fastphp\Model as Model;
 

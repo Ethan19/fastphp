@@ -6,25 +6,26 @@ define('APP_PATH', __DIR__ . '/');
 
 
 //开启调试模式
-define("APP_DEBUG",true);
+define("APP_DEBUG",false);
 
-//加载框架文件
-//require APP_PATH.'fastphp/Fastphp.php';
+
 
 //重写__autoload
 // spl_autoload_register(array("Fastphp","loadClass"));
 spl_autoload_register(function($class){ 
-    // echo $class;
-    // echo "<br />";
+
     $class = str_replace("\\","/",$class);
     $file = $class.".php";
-    // $file = $class;
-     
+
+     $res = explode("/",$class);
+
     if(file_exists($file)){
-        echo $file."<br />";
         include $file;
+    }elseif(extension_loaded($res[count($res)-1])){
+            
     }else{
         exit("not found ".$file);
+
     }
 });
 
