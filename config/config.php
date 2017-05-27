@@ -5,10 +5,12 @@ define('DB_USER','root');
 define('DB_PASSWORD','');
 define('DB_HOST','localhost');
 
+//smarty 模板后缀名，默认为html，也可以改为tpl
+define('EXT','.html');
 
 //default controllers and default action
-$config['defaultController']= 'Item';
-$config['defaultAction']='index';
+$config['defaultController']= 'Index';
+$config['defaultAction']='Index';
 
 
 //DATABASE 

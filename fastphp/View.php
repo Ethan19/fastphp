@@ -5,9 +5,22 @@ class  View{
     protected $variables;
     protected $_controller;
     protected $_action;
+    protected $smarty;
     public function __construct($controller,$action){
+        $this->smarty = new \Smarty();
         $this->_controller = $controller;
         $this->_action = $action;
+        //配置smarty
+        $this->smarty->setTemplateDir(APP_PATH."Application/Views/");
+        $this->smarty->setCompileDir(APP_PATH."data/cache/templates_c/");
+        $this->smarty->setConfigDir(APP_PATH."data/smarty_configs/");
+        $this->smarty->setCacheDir(APP_PATH."data/cache/smarty_cache/");
+        
+        $this->smarty->caching = APP_DEBUG;
+        $this->smarty->cache_lifetime = APP_DEBUG?120:0;
+
+        $this->smarty->debugging = SMARTY_DEBUG; //smarty是否开启调试模式，TRUE,调试模式
+        $this->smarty->debugging_ctrl = SMARTY_DEBUG?'URL':'NONE';
     }
     /**
      * 组合变量 function
@@ -17,36 +30,28 @@ class  View{
      * @return void
      */
     public function assign($name,$value){
-        $this->variables[$name] = $value;
+        $this->smarty->assign($name,$value);
     }
 
     /**
-     * 渲染变量 function
+     * Undocumented 重写smarty display方法
      *
+     * @param string $template
      * @return void
      */
-    public function render(){
-        extract($this->variables);
-        $controller = str_replace("Controller","",$this->_controller);
-        $defaulHeader = APP_PATH.'application/views/header.php';
-        $defaulFooter = APP_PATH.'application/views/footer.php';
-
-        $controllerHeader = APP_PATH.'application/views/'.$controller.'/header.php';
-        $controllerFooter = APP_PATH.'application/views/'.$controller.'/footer.php';
-        $controllerLayout = APP_PATH.'application/views/'.$controller.'/'.$this->_action.'.php';
-        if(file_exists($controllerHeader)){
-            include $controllerHeader;
-        }else{
-            include $defaulHeader;
+    public function display($template = ''){
+        try{
+            if($template){
+                $template = $template.EXT;
+                $this->smarty->display($template);
+            }else{
+                $controller = str_replace("Controller","",$this->_controller);
+                $controllerLayout = $controller.'/'.$this->_action.EXT;
+                $this->smarty->display($controllerLayout);
+            }
+        }catch(\Exception $e){
+            exit("not found template".$template);
         }
-        include $controllerLayout;
-
-        if(file_exists($controllerFooter)){
-            include $controllerFooter;
-        }else{
-            include $defaulFooter;
-        }
-
 
 
     }

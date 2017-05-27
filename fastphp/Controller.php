@@ -18,4 +18,8 @@ class Controller{
     public function render(){
         $this->_view->render();
     }
+
+    public function display($template = ''){
+        $this->_view->display($template);
+    }
 }
