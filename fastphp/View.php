@@ -11,6 +11,7 @@ class  View{
         $this->_controller = $controller;
         $this->_action = $action;
         //配置smarty
+        // echo APP_PATH."Application/Views/";die;
         $this->smarty->setTemplateDir(APP_PATH."Application/Views/");
         $this->smarty->setCompileDir(APP_PATH."data/cache/templates_c/");
         $this->smarty->setConfigDir(APP_PATH."data/smarty_configs/");
@@ -46,11 +47,12 @@ class  View{
                 $this->smarty->display($template);
             }else{
                 $controller = str_replace("Controller","",$this->_controller);
-                $controllerLayout = $controller.'/'.$this->_action.EXT;
-                $this->smarty->display($controllerLayout);
+                $action = strtolower($this->_action);
+                $template = $controller.'/'.$action.EXT;
+                $this->smarty->display($template);
             }
         }catch(\Exception $e){
-            exit("not found template".$template);
+            exit("not found template  ".$template);
         }
 
 

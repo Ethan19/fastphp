@@ -1,5 +1,4 @@
 <?php
-
 // error_reporting();
 // 应用目录为当前目录
 define('APP_PATH', __DIR__ . '/');
