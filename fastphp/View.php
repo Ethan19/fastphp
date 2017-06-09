@@ -49,7 +49,7 @@ class  View{
                 $controller = str_replace("Controller","",$this->_controller);
                 $action = strtolower($this->_action);
                 $template = $controller.'/'.$action.EXT;
-                $this->smarty->display($template);
+                $res = $this->smarty->display($template);
             }
         }catch(\Exception $e){
             exit("not found template  ".$template);
