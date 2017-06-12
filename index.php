@@ -5,7 +5,7 @@ define('APP_PATH', __DIR__ . '/');
 define('APP_NAME',"Application");
 
 //开启调试模式
-define("APP_DEBUG",false);//是否开始php调试模式
+define("APP_DEBUG",true);//是否开始php调试模式
 define("SMARTY_DEBUG",false);//smarty是否开始调试模式
 //加载composer
 require_once APP_PATH."vendor/autoload.php";

@@ -42,7 +42,6 @@ class Fastphp{
         $controllerName  ="\Application\Controller\\".$controller."Controller";
         try{
             if(!class_exists($controllerName)){
-                echo "11<br />";
                 throw new \Exception($controllerName."NOT FOUND", 1);
             }
             if(!method_exists($controllerName,$action)){

@@ -15,8 +15,10 @@ class IndexController extends Controller{
      * @date date() 
      */
     public function index(){
-        // $itemModel = new ItemModel();
-        // $res =  $itemModel->query("select * from item");
+
+        $itemModel = new ItemModel();
+        $res =  $itemModel->getData();
+                    
         // $this->assign("list",$res);
         $this->display();
     }

@@ -1,9 +1,10 @@
 <?php
 //database config
-define('DB_NAME','fastphp');
-define('DB_USER','root');
-define('DB_PASSWORD','');
-define('DB_HOST','localhost');
+define('DATABASE_TYPE','mysql');
+define('DATABASE_NAME','fastphp');
+define('SERVER','127.0.0.1');
+define('USERNAME','root');
+define('PASSWORD','');
 
 //smarty 模板后缀名，默认为html，也可以改为tpl
 define('EXT','.html');
@@ -14,9 +15,10 @@ $config['defaultAction']='Index';
 
 
 //DATABASE 
-$config['db']['dbname'] = DB_NAME;
-$config['db']['username'] = DB_USER;
-$config['db']['password'] = DB_PASSWORD;
-$config['db']['host'] = DB_HOST;
+$config['db']['database_type'] = DATABASE_TYPE;
+$config['db']['database_name'] = DATABASE_NAME;
+$config['db']['server'] = SERVER;
+$config['db']['username'] = USERNAME;
+$config['db']['password'] = PASSWORD;
 return $config;
 
