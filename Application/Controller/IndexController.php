@@ -6,20 +6,17 @@ class IndexController extends Controller{
 
 
     /**
-     * Undocumented function
-     *
-     * @return void
-     * @param
-     * @return
-     * @throw
-     * @date date() 
+     * description
+     * @Author Ethan
+     * @date   2017-06-14T17:10:21+0800
+     * @return [type]
      */
     public function index(){
 
         $itemModel = new ItemModel();
-        $res =  $itemModel->getData();
                     
-        // $this->assign("list",$res);
+        $res =  $itemModel->select("item",['email']);
+        $this->assign("list",$res); 
         $this->display();
     }
 }

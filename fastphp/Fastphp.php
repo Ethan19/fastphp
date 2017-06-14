@@ -109,6 +109,13 @@ class Fastphp{
      * @return void
      * 重写spl_autoload_register，现在使用命名空间，暂停启用此处
      */
+    /**
+     * description
+     * @Author Ethan
+     * @date   2017-06-14
+     * @param  [type]
+     * @return [type]
+     */
     public static function loadClass($class){
 
         $framework = __DIR__."/".$class.".php";
