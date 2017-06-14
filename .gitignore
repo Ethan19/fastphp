@@ -4,3 +4,5 @@ vendor/*
 .tags_sorted_by_file
 composer.lock
 .DS_Store
+data/cache/*
+data/smarty_configs/*
