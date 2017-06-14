@@ -107,7 +107,7 @@ class Fastphp{
      *
      * @param [type] $class
      * @return void
-     * 重写spl_autoload_register，现在使用命名空间，暂时启用此处
+     * 重写spl_autoload_register，现在使用命名空间，暂停启用此处
      */
     public static function loadClass($class){
 
