@@ -48,6 +48,7 @@ class  View{
             }else{
                 $controller = str_replace("Controller","",$this->_controller);
                 $action = strtolower($this->_action);
+                // $template = APP_TEMPLATE.$controller.'/'.$action.EXT;
                 $template = $controller.'/'.$action.EXT;
                 $res = $this->smarty->display($template);
             }

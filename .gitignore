@@ -6,3 +6,4 @@ composer.lock
 .DS_Store
 data/cache/*
 data/smarty_configs/*
+config/config.php

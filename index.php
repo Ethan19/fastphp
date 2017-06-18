@@ -3,7 +3,7 @@
 // 应用目录为当前目录
 define('APP_PATH', __DIR__ . '/');
 define('APP_NAME',"Application");
-
+define("APP_TEMPLATE",APP_PATH."Application/Views/");//定义模版路径
 //开启调试模式
 define("APP_DEBUG",true);//是否开始php调试模式
 define("SMARTY_DEBUG",false);//smarty是否开始调试模式

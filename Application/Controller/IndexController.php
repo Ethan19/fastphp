@@ -13,10 +13,10 @@ class IndexController extends Controller{
      */
     public function index(){
 
-        $itemModel = new ItemModel();
+        // $itemModel = new ItemModel();
                     
-        $res =  $itemModel->select("item",['email']);
-        $this->assign("list",$res); 
+        // $res =  $itemModel->select("item",['email']);
+        // $this->assign("list",$res); 
         $this->display();
     }
 }

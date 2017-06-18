@@ -4,7 +4,7 @@ define('DATABASE_TYPE','mysql');
 define('DATABASE_NAME','fastphp');
 define('SERVER','127.0.0.1');
 define('USERNAME','root');
-define('PASSWORD','');
+define('PASSWORD','root');
 
 //smarty 模板后缀名，默认为html，也可以改为tpl
 define('EXT','.html');
